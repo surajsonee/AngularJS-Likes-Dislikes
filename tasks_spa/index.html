@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="js/manager.js"></script>
+</head>
+
+<body ng-app="taskModule">
+	<center><h3>{{ message }}</h3></center>
+
+	<div ng-controller="taskController" style="width: 960px; margin: auto">
+
+			<form role="form" style="width: 400 px;">
+  			<div class="form-group">
+    			<label for="task">New Task:</label>
+    			<input type="text" class="form-control" id="task" ng-model="new_task">
+  			</div>
+  			
+  			<input class="btn-primary" type="button" value="Save" ng-click="addTask()">	
+		</form><br /><br />
+
+		<h4>Tasks</h4><hr />
+
+		<table class="table table-striped">
+			<thead>
+				<tr class="success">
+					<th>#</th>
+					<th>Task</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="task in tasks">
+					<td>{{$index + 1}}.</td>
+					<td>{{ task.title }}</td>
+					<td>
+						<input type="image" src="{{ task.completed ? 'images/tick.png' : 'images/cross.png' }}" ng-click="task.completed = !task.completed" style="width:40px; height:40px;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+ 	
+	</div>
+</body>
+</html>

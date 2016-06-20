@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="js/manager.js"></script>
+</head>
+
+<body ng-app="likesModule">
+
+	<center><h3>Celebrity Likes Table in AngularJs</h3></center>
+
+	<div ng-controller="likesController">
+		<table class="table table-striped">
+			<thead>
+				<tr class="success">
+					<th>#</th>
+					<th>Name</th>
+					<th>Likes</th>
+					<th>Dislikes</th>
+					<th>Like/Dislike</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="celebrity in celebrities">
+					<td>{{$index + 1}}.</td>
+					<td>{{ celebrity.name }}</td>
+					<td>{{ celebrity.likes }}</td>
+					<td>{{ celebrity.dislikes }}</td>
+					<td>
+						<input class="btn-success" type="button" value="Like" ng-click="incLikes(celebrity)">	
+						<input class="btn-danger" type="button" value="Dislike" ng-click="incDislikes(celebrity)">	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+ 	
+	</div>
+
+</body>
+</html>
